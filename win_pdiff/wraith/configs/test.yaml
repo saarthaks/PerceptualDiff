@@ -1,0 +1,21 @@
+browser: '""'
+directory: shots
+domains:
+  current: '""'
+  new: '""'
+fuzz: 2%
+gallery:
+  template: slideshow_template
+  thumb_height: 200
+  thumb_width: 200
+mode: diffs_first
+paths:
+  testAccountSettings: /
+  testAdvancedSettings: /
+  testGeneralSettings: /
+  testSecureEmail: /
+  testServerSettings: /
+  testViewAccounts: /
+screen_widths:
+- 768x400
+threshold: 0

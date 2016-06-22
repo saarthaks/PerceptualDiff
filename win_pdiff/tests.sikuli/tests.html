@@ -1,0 +1,194 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>tests.sikuli\tests.sikuli</h2> <a href="tests.sikuli\tests.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> time
+<span class="kw">import</span> os
+<span class="kw">import</span> shutil
+<span class="kw">import</span> sys
+sys.path.append(os.path.join(<span class="str">'C:\Users\saart\wraith'</span>, <span class="str">'bin'</span>))
+<span class="kw">import</span> wraithpath
+
+
+<span class="kw">def</span> setup(path):
+    App.open(path)
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+
+<span class="kw">def</span> testSecureEmail(new):
+    <span class="skw">wait</span>(<span class="str">"testSecureImages4.PNG"</span>)
+    OutlookApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(OutlookApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testSecureEmail'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'secureEmail_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'secureEmail_current.png'</span>))
+
+<span class="kw">def</span> testViewAccounts(new):
+    <span class="skw">type</span>(Key.ALT)
+    time.<span class="skw">sleep</span>(<span class="dig">0.5</span>)
+    <span class="skw">type</span>(<span class="str">'f'</span>)
+    time.<span class="skw">sleep</span>(<span class="dig">0.5</span>)
+    <span class="skw">type</span>(<span class="str">'i'</span>)
+    time.<span class="skw">sleep</span>(<span class="dig">0.5</span>)
+    <span class="skw">type</span>(<span class="str">'s'</span>)
+    time.<span class="skw">sleep</span>(<span class="dig">0.5</span>)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">wait</span>(<span class="str">"testViewImages.PNG"</span>)
+    SettingsApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(SettingsApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testViewAccounts'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'viewAccounts_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'viewAccounts_current.png'</span>))
+
+<span class="kw">def</span> testAccountSettings(new):
+    <span class="skw">type</span>(<span class="str">'a'</span>, KEY_ALT)
+    <span class="skw">wait</span>(<span class="str">"testAccountImages.PNG"</span>)
+    SettingsApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(SettingsApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testAccountSettings'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'accountSettings_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'accountSettings_current.png'</span>))
+
+<span class="kw">def</span> testGeneralSettings(new):
+    <span class="skw">type</span>(<span class="str">'m'</span>, KEY_ALT)
+    <span class="skw">wait</span>(<span class="str">"testGeneralImages.PNG"</span>)
+    SettingsApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(SettingsApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testGeneralSettings'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'generalSettings_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'generalSettings_current.png'</span>))
+
+<span class="kw">def</span> testServerSettings(new):
+    <span class="skw">find</span>(<span class="str">"testGeneralImages.PNG"</span>)
+    <span class="skw">click</span>(<span class="str">"testGeneralImages.PNG"</span>)
+    SettingsApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(SettingsApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testServerSettings'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'serverSettings_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'serverSettings_current.png'</span>))
+
+<span class="kw">def</span> testAdvancedSettings(new):
+    <span class="skw">find</span>(<span class="str">"testAdvancedImages.PNG"</span>)
+    <span class="skw">click</span>(Pattern(<span class="str">"testAdvancedImages.PNG"</span>).targetOffset(<span class="dig">93</span>,<span class="dig">0</span>))
+    SettingsApp = App.focusedWindow()
+    time.<span class="skw">sleep</span>(<span class="dig">2</span>)
+    old_path = <span class="skw">capture</span>(SettingsApp)
+    final_path = os.path.join(wraithpath.imgs(), <span class="str">'testAdvancedSettings'</span>)
+    <span class="kw">if</span> new:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'advancedSettings_new.png'</span>))
+    <span class="kw">else</span>:
+        shutil.move(old_path, os.path.join(final_path, <span class="str">'advancedSettings_current.png'</span>))
+
+<span class="kw">def</span> teardown():
+    found = <span class="skw">find</span>(Pattern(<span class="str">"teardownImages-1.PNG"</span>).targetOffset(<span class="dig">230</span>,-<span class="dig">85</span>))
+    hover(found)
+    <span class="skw">click</span>(found)
+    found = <span class="skw">find</span>(Pattern(<span class="str">"teardownImages2.PNG"</span>).targetOffset(<span class="dig">10</span>,-<span class="dig">36</span>))
+    <span class="skw">click</span>(found)
+    <span class="skw">type</span>(<span class="str">'c'</span>, KEY_ALT)
+    found = <span class="skw">find</span>(Pattern(<span class="str">"teardownImages3.PNG"</span>).targetOffset(<span class="dig">63</span>,-<span class="dig">6</span>))
+    <span class="skw">click</span>(found)
+
+<span class="kw">def</span> main(new):
+    testSecureEmail(new)
+    testViewAccounts(new)
+    testAccountSettings(new)
+    testGeneralSettings(new)
+    testServerSettings(new)
+    testAdvancedSettings(new)
+
+<span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
+    path = <span class="str">'C:\\'</span> + <span class="str">'Program Files (x86)\\'</span> + <span class="str">'Microsoft Office\\'</span> + <span class="str">'root\\'</span> + <span class="str">'Office16\\'</span> + <span class="str">'OUTLOOK.exe'</span>
+    new = True
+    <span class="kw">if</span> <span class="str">'current'</span> <span class="kw">in</span> sys.argv:
+        new = False
+
+    setup(path)
+    main(new)
+    teardown()
+    <span class="kw">print</span> <span class="str">"done"</span>
+</pre>
+</body>
+</html>
