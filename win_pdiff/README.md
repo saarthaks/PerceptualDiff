@@ -23,6 +23,7 @@ The tool which does the heavy-lifting for image processing is ImageMagick. To in
 Start out by cloning the repository with `git clone https://github.com/saarthaks/PerceptualDiff`. You can delete the osx version as there are no cross dependencies. The first step in being able to run Wraith in Windows involves editing a few of its Ruby files. Find the base directory where the Wraith gem was installed and remove the following files:
 * wraith-3.2.0\lib\wraith\compare_images.rb
 * wraith-3.2.0\lib\wraith\thumbnails.rb
+
 Then, replace them with the files `win-wraith-3.2.0\compare_images.rb` and `win-wraith-3.2.0\thumbnails.rb`. Originally, wraith depends on parallel processing via Process.fork() and Process.spawn(), which are not available operations in a Windows environment. With the updated files, I've reverted to running the image comparison and editing sequentially, and has minimal impact on the runtime of the script. 
 
 Next, setup the base directories in wraithpath.py by editing the following lines at the top of wraith/bin/wraithpath.py: 
@@ -45,7 +46,7 @@ sys.path.append('C:/Absolute/path/to/wraith//bin')
 ```
 Finally, move tests.sikuli into the base directory for SikuliX, for example via 
 ```
-$ cd ..\osx_pdiff
+$ cd ..\win_pdiff
 $ mv tests.sikuli C:\Users\saart\SikuliX\tests.sikuli
 ```
 

@@ -1,7 +1,7 @@
 import os
 import shutil
 import sys
-sys.path.append('C:\Users\saart\wraith\\bin')
+sys.path.append('\Users\saart\wraith\bin')
 import wraithpath
 
 

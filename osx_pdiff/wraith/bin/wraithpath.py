@@ -1,8 +1,11 @@
 import os
 
 
-ROOT_DIR = '/Users/saart/wraith'
-SIKULI_DIR = '/Users/saart/SikuliX'
+ROOT_DIR = ''           # change to base directory for wraith folder, 
+                        # e.g., /Users/saart/PerceptualDiff/osx_pdiff/wraith
+
+SIKULI_DIR = ''         # change to base directory for SikuliX folder,
+                        # e.g., /Users/saart/SikuliX
 
 def configs(name):
     return os.path.join(os.path.join(ROOT_DIR, 'configs'), name)
