@@ -1,7 +1,7 @@
 import os
 import shutil
 import sys
-sys.path.append('C:\Users\saart\wraith\\bin')
+sys.path.append('C:\Users\saart\PerceptualDiff\win_pdiff\wraith\\bin')
 import wraithpath
 
 

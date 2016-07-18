@@ -3,18 +3,31 @@ import os
 import time
 import subprocess
 import sys
-sys.path.append('C:/Users/saart/wraith//bin')
+sys.path.append('C:/Users/saart/PerceptualDiff/win_pdiff/wraith//bin')
 import wraithpath
 
 def setup_folders(tests):
     img_path = wraithpath.imgs()
-    os.makedirs(img_path)
+    try:
+        os.makedirs(img_path)
+    except OSError:
+        if not os.path.isdir(img_path):
+            raise
+
     for test in tests:
-        os.makedirs(os.path.join(img_path, test))
+        try:
+            os.makedirs(os.path.join(img_path, test))
+        except OSError:
+            if not os.path.isdir(os.path.join(img_path, test)):
+                raise
 
     thumb_path = wraithpath.thumbs(img_path, 'thumbnails')
     for test in tests:
-        os.makedirs(os.path.join(thumb_path, test))
+        try:
+            os.makedirs(os.path.join(thumb_path, test))
+        except OSError:
+            if not os.path.isdir(os.path.join(thumb_path, test)):
+                raise
 
 def make_config(tests):
     dict = {}
@@ -36,7 +49,7 @@ def make_config(tests):
     dict['gallery']['thumb_height'] = 200
     dict['fuzz'] = "2%"
 
-    config_path = wraithpath.configs('test.yaml')
+    config_path = wraithpath.configs('pdiff_config.yaml')
     outfile = open(config_path, 'w')
     outfile.write(yaml.dump(dict, default_flow_style=False))
     outfile.close()
@@ -65,7 +78,7 @@ def main(force=False):
             'testGeneralSettings','testServerSettings',
             'testAdvancedSettings']
     
-    #setup_folders(tests)
+    setup_folders(tests)
     
     p = generate_images(force)
     
