@@ -1,10 +1,10 @@
-#PerceptualDiff for OSX
-#####Visual test automation for Mac Mail
+# PerceptualDiff for OSX
+##### Visual test automation for Mac Mail
 
 This system relies on two major tools for carrying out the visual automation, effectively splitting it up into two stages: generating the screenshots, and performing an image comparison between the new build and the accepted build. The first stage is handled by [Sikuli](http://www.sikuli.org), which supports scripting through its own IDE, Sikuli X, and allows for visual automation and screen capture. The second stage is handled by [Wraith](http://bbc-news.github.io/wraith/), which carries out perceptual diff operation on the captured images and creates an HTML file to view the results. 
 
-##Getting Started
-###Prerequesites
+## Getting Started
+### Prerequesites
 ##### 1. Sikuli
 Sikuli is primarily written in Java, but supports scripting in other Java-enabled langauges, such as Jython. To begin, ensure that you have valid Java installation of at least Java 7. If not, download and install either the JRE or the JDK from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Then continue on with the installation for Sikuli as detailed below.
 
@@ -17,7 +17,7 @@ The second stage of configuration requires installing Wraith's dependencies. Fir
 The tool which does the heavy-lifting for image processing is ImageMagick. To install, use brew with `brew install imagemagick`. Finally, install Wraith with `gem install wraith`. To confirm proper installation, make sure both imagemagick and wraith can be run as commmands, by typing `compare` and `wraith` into your terminal. If this fails, find the installation locations and make sure they are in your PATH.
 
 
-###Setup
+### Setup
 Start out by cloning the repository with `git clone https://github.com/saarthaks/PerceptualDiff`. You can delete the windows version as there are no cross dependencies. Then setup the base directories in wraithpath.py by editing the following lines at the top of wraith/bin/wraithpath.py: 
 ```
 ...
