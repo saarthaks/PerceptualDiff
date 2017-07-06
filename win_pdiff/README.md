@@ -1,10 +1,10 @@
-#PerceptualDiff for Windows
-#####Visual test automation for Microsoft Outlook
+# PerceptualDiff for Windows
+##### Visual test automation for Microsoft Outlook
 
 This system relies on two major tools for carrying out the visual automation, effectively splitting it up into two stages: generating the screenshots, and performing an image comparison between the new build and the accepted build. The first stage is handled by [Sikuli](http://www.sikuli.org), which supports scripting through its own IDE, Sikuli X, and allows for visual automation and screen capture. The second stage is handled by [Wraith](http://bbc-news.github.io/wraith/), which carries out perceptual diff operation on the captured images and creates an HTML file to view the results. 
 
-##Getting Started
-###Prerequesites
+## Getting Started
+### Prerequesites
 ##### 1. Sikuli
 Sikuli is primarily written in Java, but fortunately supports scripting in other languages, like Python. To begin, ensure that you have valid Java installation of at least Java 7. If not, download and install either the JRE or the JDK from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Then continue on with the installation for Sikuli as detailed below.
 
@@ -19,7 +19,7 @@ ruby dk.rb install
 ```
 The tool which does the heavy-lifting for image processing is ImageMagick. To install, download from the Windows binary release [here](http://www.imagemagick.org/script/binary-releases.php#windows). Installing from here automatically adds ImageMagick to your path. With Wraith's dependencies handled, install Wraith with `gem install wraith`. To confirm proper installation, make sure both imagemagick and wraith can be run as commmands, by typing `compare` and `wraith` into your terminal. If this fails, find the installation locations and make sure they are in your PATH.
 
-###Setup
+### Setup
 Start out by cloning the repository with `git clone https://github.com/saarthaks/PerceptualDiff`. You can delete the osx version as there are no cross dependencies. The first step in being able to run Wraith in Windows involves editing a few of its Ruby files. Find the base directory where the Wraith gem was installed and remove the following files:
 * wraith-3.2.0\lib\wraith\compare_images.rb
 * wraith-3.2.0\lib\wraith\thumbnails.rb
